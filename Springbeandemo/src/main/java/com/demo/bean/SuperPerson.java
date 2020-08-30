@@ -1,8 +1,11 @@
 package com.demo.bean;
 
+import com.demo.ann.Super;
+
 /**
  * @author Administrator
  */
+@Super
 public class SuperPerson extends Person {
 
     private Integer type;
@@ -19,6 +22,6 @@ public class SuperPerson extends Person {
     public String toString() {
         return "SuperPerson{" +
                 "type=" + type +
-                '}';
+                "} " + super.toString();
     }
 }

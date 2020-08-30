@@ -13,4 +13,8 @@
     <bean id="objectFactory" class="org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean">
         <property name="targetBeanName" value="person"/>
     </bean>
+
+    <bean id="superPerson" class="com.demo.bean.SuperPerson" parent="person">
+        <property name="type" value="123"/>
+    </bean>
 </beans>
