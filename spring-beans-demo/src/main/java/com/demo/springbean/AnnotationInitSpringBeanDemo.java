@@ -3,7 +3,6 @@ package com.demo.springbean;
 import com.demo.springbean.factory.DefaultPersonfactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 /**
  * 通过注解的方式初始化Bean
