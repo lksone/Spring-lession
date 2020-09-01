@@ -1,7 +1,6 @@
 package com.demo.springbean;
 
 import com.demo.bean.Person;
-import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
