@@ -1,6 +1,7 @@
 package com.demo.exception;
 
 /**
+ *
  * @author lks
  * @Time 2020/9/1
  **/
