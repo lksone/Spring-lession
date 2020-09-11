@@ -7,4 +7,9 @@ package com.demo.string;
  * @Description todo
  */
 public class StringBufferDemo {
+
+
+    public static void main(String[] args) {
+        System.out.println();
+    }
 }
