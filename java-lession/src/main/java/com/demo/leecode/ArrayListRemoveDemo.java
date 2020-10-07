@@ -42,7 +42,7 @@ public class ArrayListRemoveDemo {
         System.out.println(remove);*/
 
         //2. 删除数据
-        list.add(null);
+       /* list.add(null);
         list.add("1");
         list.add(null);
         list.add("2");
@@ -50,6 +50,10 @@ public class ArrayListRemoveDemo {
         list.add("21");
         System.out.println(list);
         list.remove(null);
-        System.out.println(list);
+        System.out.println(list);*/
+
+
+        System.out.println(10 << 1);
+        System.out.println(10 >> 2);
     }
 }
