@@ -55,7 +55,24 @@ public class longestPalindrome {
         return s.substring(i, j);
     }
 
-    public static void main(String[] args) {
+    private static Boolean res(int x) {
+        if (x < 0) {
+            return false;
+        }
+        return getRes(x) == x;
+    }
 
+    public static int getRes(int x) {
+        int res = 0;
+        while (x != 0) {
+            res = res * 10 + x % 10;
+            x = x / 10;
+        }
+        return res;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(getRes(1000000001));
+        System.out.println(res(1000000001));
     }
 }
