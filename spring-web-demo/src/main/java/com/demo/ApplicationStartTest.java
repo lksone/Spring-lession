@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
 import org.springframework.context.annotation.Bean;
 
 /**
- * @author lks
+ * @author lks 123
  * @date 2020/10/25
  */
 public class ApplicationStartTest {
