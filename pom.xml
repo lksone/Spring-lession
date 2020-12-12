@@ -15,6 +15,9 @@
         <module>spring-thread-web</module>
         <module>spring-web-demo</module>
         <module>spring-kafka</module>
+        <module>spring-zookeeper-demo</module>
+        <module>spring-demo</module>
+        <module>zookeeper-demo</module>
     </modules>
 
     <properties>
@@ -102,8 +105,26 @@
                 <version>3.6.2</version>
             </dependency>
 
-
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-recipes</artifactId>
+                <version>5.1.0</version>
+            </dependency>
         </dependencies>
-
     </dependencyManagement>
+
+    <repositories>
+        <repository>
+            <id>maven-ali</id>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>;
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+                <checksumPolicy>fail</checksumPolicy>
+            </snapshots>
+        </repository>
+    </repositories>
 </project>
