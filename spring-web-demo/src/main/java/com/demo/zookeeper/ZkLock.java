@@ -18,6 +18,7 @@ public class ZkLock {
 
         for (int i = 0; i < 3; i++) {
             Runnable myRunnable = new Runnable() {
+                @Override
                 public void run() {
                     doWithLock(client, mutex);
                 }
