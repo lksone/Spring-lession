@@ -16,7 +16,6 @@
         <module>spring-web-demo</module>
         <module>spring-kafka</module>
         <module>spring-zookeeper-demo</module>
-        <module>spring-zookeeper-demo</module>
         <module>spring-demo</module>
         <module>zookeeper-demo</module>
     </modules>
