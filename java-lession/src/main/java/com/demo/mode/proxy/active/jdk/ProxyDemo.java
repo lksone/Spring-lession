@@ -1,4 +1,7 @@
-package com.demo.mode.proxy.active;
+package com.demo.mode.proxy.active.jdk;
+
+import com.demo.mode.proxy.active.BuyHouse;
+import com.demo.mode.proxy.active.BuyHouseImpl;
 
 import java.lang.reflect.Proxy;
 

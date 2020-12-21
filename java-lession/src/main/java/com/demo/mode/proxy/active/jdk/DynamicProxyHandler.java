@@ -1,4 +1,4 @@
-package com.demo.mode.proxy.active;
+package com.demo.mode.proxy.active.jdk;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
