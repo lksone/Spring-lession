@@ -60,7 +60,7 @@ public class ObservableThread<T> extends Thread implements Observable {
             this.update(Cycle.STARTED, null, null);
             this.update(Cycle.RUNNING, null, null);
             T call = this.task.call();
-            this.update(Cycle.DONE, null, null);
+            this.update(Cycle.DONE, call, null);
         } catch (Exception e) {
             this.update(Cycle.ERROR, null, e);
         }
