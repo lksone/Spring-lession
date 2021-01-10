@@ -11,16 +11,16 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @date 2020/12/1 17:03
  **/
 @Slf4j
-public enum  ThreadEnum {
+public enum ThreadEnum {
 
     /**
      * 通用任务异步执行
      */
     COMMON_TASK("通用任务异步执行",
-                        new ThreadPoolExecutor(4,
+            new ThreadPoolExecutor(4,
                     8,
-                        1,
-                TimeUnit.MINUTES,
+                    1,
+                    TimeUnit.MINUTES,
                     new ArrayBlockingQueue<>(200),
                     new NamedThreadFactory("ops-thread")));
 
