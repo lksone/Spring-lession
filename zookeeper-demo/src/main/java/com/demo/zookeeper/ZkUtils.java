@@ -1,15 +1,12 @@
 package com.demo.zookeeper;
 
+import java.math.BigDecimal;
+
 public class ZkUtils {
 
     public static void main(String[] args) {
-        Zookeeper
+        BigDecimal multiply = BigDecimal.valueOf(2).multiply(BigDecimal.TEN);
+        System.out.println(multiply);
     }
 
-    private String path = "";
-
-
-    public Boolean checkMainPath(String path){
-
-    }
 }
