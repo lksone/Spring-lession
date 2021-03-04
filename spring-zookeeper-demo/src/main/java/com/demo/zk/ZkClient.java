@@ -6,8 +6,6 @@ import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.apache.zookeeper.CreateMode;
 
-import javax.annotation.PostConstruct;
-
 /**
  * @author lks
  * @describe zookeeper連接工具類
