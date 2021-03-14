@@ -1,4 +1,4 @@
-package com.demo.thread;
+package com.demo.thread.interrupt;
 
 public class MyThread3 extends Thread {
 

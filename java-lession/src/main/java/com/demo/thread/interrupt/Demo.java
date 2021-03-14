@@ -1,4 +1,4 @@
-package com.demo.thread;
+package com.demo.thread.interrupt;
 
 /**
  * 线程切换引发的上下文切换

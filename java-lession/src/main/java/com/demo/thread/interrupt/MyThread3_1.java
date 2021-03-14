@@ -1,4 +1,4 @@
-package com.demo.thread;
+package com.demo.thread.interrupt;
 
 
 /**
