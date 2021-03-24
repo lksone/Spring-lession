@@ -20,4 +20,15 @@ public class ConnectionUtil {
         Connection connection = factory.newConnection();
         return connection;
     }
+
+    public static Connection getConnection(String vHost) throws Exception {
+        ConnectionFactory factory = new ConnectionFactory();
+        factory.setHost("127.0.0.1");
+        factory.setPort(5672);
+        factory.setVirtualHost(vHost);
+        factory.setUsername("guest");
+        factory.setPassword("guest");
+        Connection connection = factory.newConnection();
+        return connection;
+    }
 }

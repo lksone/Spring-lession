@@ -24,6 +24,7 @@ public class ProviderDemo {
         channel.exchangeDeclare(EXCHANGE_NAME, "direct");
         //设置不同的routing值发送到不同的路由上面
         for (int i = 0; i < 100; i++) {
+            //设置到同一个交换机上绑定的是不同的rounting key
             if (i % 2 == 0) {
                 channel.basicPublish(EXCHANGE_NAME, EXCHANGE_ROUTING_KEY1, null, ("A路由模型发送的第 " + i + " 条信息").getBytes());
             } else {
