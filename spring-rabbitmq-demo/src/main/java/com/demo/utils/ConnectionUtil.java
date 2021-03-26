@@ -10,6 +10,11 @@ import com.rabbitmq.client.ConnectionFactory;
  */
 public class ConnectionUtil {
 
+    /**
+     * 设置不同的mq信息
+     * @return
+     * @throws Exception
+     */
     public static Connection getConnection() throws Exception {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("127.0.0.1");
@@ -21,6 +26,13 @@ public class ConnectionUtil {
         return connection;
     }
 
+    /**
+     * 根据不同的项目信息获取不同的group下的问题
+     *
+     * @param vHost         綁定vhost
+     * @return
+     * @throws Exception
+     */
     public static Connection getConnection(String vHost) throws Exception {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("127.0.0.1");
