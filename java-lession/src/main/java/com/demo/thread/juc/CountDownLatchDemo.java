@@ -6,7 +6,6 @@ import java.util.concurrent.CountDownLatch;
  * 只有等到5個線程時才會啟動
  */
 public class CountDownLatchDemo {
-
     public static void main(String[] args) throws InterruptedException {
         CountDownLatch countDown = new CountDownLatch(1);
         CountDownLatch await = new CountDownLatch(5);
