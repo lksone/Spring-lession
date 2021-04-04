@@ -1,4 +1,4 @@
-package com.demo.zk;
+package com.demo.zk.demo;
 
 import org.apache.curator.RetryPolicy;
 import org.apache.curator.framework.CuratorFramework;
@@ -13,7 +13,7 @@ import org.apache.zookeeper.CreateMode;
  **/
 public class ZkClient {
 
-    private final static String ZK_URL = "101.200.235.14:2181";
+    private final static String ZK_URL = "127.0.0.1:2181";
 
     private final static int CONNECTION_TIME_OUT= 3*1000;
 
