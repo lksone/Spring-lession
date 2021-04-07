@@ -29,9 +29,10 @@ public class ConsumerDemo2 {
                  *      true：表示拒收消息后将消息重新放入队列
                  *      false：表示拒收消息后删除该消息
                  */
-              channel.basicNack(envelope.getDeliveryTag(), false, false);
+                channel.basicNack(envelope.getDeliveryTag(), false, true);
             }
         };
         channel.basicConsume(QUEUE_NAME, false, defaultConsumer);
+        channel.waitForConfirmsOrDie(1000);
     }
 }

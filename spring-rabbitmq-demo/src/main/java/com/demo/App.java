@@ -1,8 +1,8 @@
 package com.demo;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.core.env.ConfigurableEnvironment;
@@ -11,10 +11,10 @@ import org.springframework.scheduling.annotation.EnableAsync;
 /**
  * Hello world!
  */
-@SpringBootApplication
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 @Slf4j
+@EnableRabbit
 @EnableAsync
-@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
 public class App {
     public static void main(String[] args) {
         ConfigurableEnvironment env = SpringApplication.run(App.class, args).getEnvironment();
