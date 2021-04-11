@@ -33,6 +33,12 @@
         <!--父類引入的jar-->
         <dependencies>
 
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>19.0</version>
+            </dependency>
+
             <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-redis -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
