@@ -4,6 +4,10 @@ import lombok.SneakyThrows;
 
 import java.util.concurrent.Semaphore;
 
+
+/**
+ * 线程交替执行
+ */
 public class ABCSemaphore {
 
     private static Semaphore A = new Semaphore(1);
