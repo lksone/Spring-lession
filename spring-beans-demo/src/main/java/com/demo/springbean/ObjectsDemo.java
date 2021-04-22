@@ -10,7 +10,6 @@ public class ObjectsDemo {
 
     public static void main(String[] args) {
         String msg = null;
-
         String s = Objects.requireNonNull(msg);
 
         System.out.println(s);
