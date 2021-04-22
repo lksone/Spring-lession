@@ -20,8 +20,10 @@ public class App {
         //获取环境信息
         ConfigurableEnvironment env = SpringApplication.run(App.class, args).getEnvironment();
         log.info(
-                "\n----------------------------------------------------------\n\t" + "服务端 '{}' 启动完成! \n\t"
-                        + "环境(s): {}\n\t" + "日志级别: {}" + "\n----------------------------------------------------------",
+                "\n----------------------------------------------------------\n\t"
+                        + "服务端 '{}' 启动完成! \n\t"
+                        + "环境(s): {}\n\t" + "日志级别: {}"
+                        + "\n----------------------------------------------------------",
                 env.getProperty("spring.application.name"),
                 env.getActiveProfiles(),
                 env.getProperty("logging.level.ROOT"));
