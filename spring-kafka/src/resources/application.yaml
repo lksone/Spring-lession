@@ -1,4 +1,12 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /kafka
 spring:
+  application:
+    name: kafka
+  profiles:
+    active: uat
   # Kafka 配置项，对应 KafkaProperties 配置类
   kafka:
     bootstrap-servers: 101.200.235.14:9092 # 指定 Kafka Broker 地址，可以设置多个，以逗号分隔
@@ -10,6 +18,7 @@ spring:
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer # 消息的 value 的序列化
     # Kafka Consumer 配置项
     consumer:
+      group-id: test-consumer-group
       auto-offset-reset: earliest # 设置消费者分组最初的消费进度为 earliest 。可参考博客 https://blog.csdn.net/lishuangzhe7047/article/details/74530417 理解
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
