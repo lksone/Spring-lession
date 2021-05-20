@@ -7,13 +7,14 @@ import java.util.concurrent.locks.ReentrantLock;
 public class ReetLockDemo {
 
     public static void main(String[] args) {
-        final ReentrantLock lock = new ReentrantLock();
+
 
         List<Thread> threads = new ArrayList<>(10);
         for (int i = 0; i < 10; i++) {
             Thread thread = new Thread("线程： " + i) {
                 @Override
                 public void run() {
+                    ReentrantLock lock = new ReentrantLock();
                     try {
                         //加锁
                         lock.lock(); // 如果线程被中断了在这里会抛出异常
