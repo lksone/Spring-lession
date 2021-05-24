@@ -10,9 +10,10 @@ public class ThreadPool {
     private ThreadPoolExecutor threadPoolExecutor = null;
 
 
-    private ThreadPool(){
-        if(threadPoolExecutor==null){
-            threadPoolExecutor = new ThreadPoolExecutor(10,10,1000, TimeUnit.SECONDS,new ArrayBlockingQueue<Runnable>(1000));
+    private ThreadPool() {
+        if (threadPoolExecutor == null) {
+            threadPoolExecutor = new ThreadPoolExecutor(10, 10, 1000,
+                    TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(1000));
         }
     }
 
