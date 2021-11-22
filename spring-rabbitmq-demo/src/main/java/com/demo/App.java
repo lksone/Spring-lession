@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.scheduling.annotation.EnableAsync;
 
+
 /**
  * Hello world!
  */
