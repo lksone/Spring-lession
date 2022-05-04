@@ -1,4 +1,4 @@
-package com.demo.leecode.base;
+package com.demo.leecode.base.sort;
 
 /**
  * @author lks
