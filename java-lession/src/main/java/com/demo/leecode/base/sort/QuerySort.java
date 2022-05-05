@@ -47,6 +47,46 @@ public class QuerySort {
     }
 
     /**
+     * 快速排序算法
+     *
+     * @param arr       数组
+     * @param left      左index
+     * @param right     右index
+     * @return
+     */
+    public static int partiton(int[] arr,int left,int right){
+        int povit = arr[left];
+
+        while (left<right){
+            //从左到右
+            while (left<right && arr[right] >= povit){
+                right--;
+            }
+            arr[left] = arr[right];
+            while (left<right && arr[left] <= povit){
+                left++;
+            }
+            arr[right] = arr[left];
+            //从右到左移动
+        }
+        arr[left] = povit;
+        //这个是基准的index
+        return left;
+    }
+
+    public static void sort(int[] arr,int left,int right){
+        if(left < right){
+            int pivot = partition(arr,left,right);
+            System.out.println(Arrays.toString(arr));
+            //重左到右
+            quickSort(arr,left,pivot-1);
+            //右半邊的關係
+            quickSort(arr,pivot+1,right);
+        }
+    }
+
+
+    /**
      * 快速排序
      *
      * @param arr
@@ -66,7 +106,7 @@ public class QuerySort {
     }
 
     public static void main(String[] args) {
-        int[] arr = {8,9,1,7,2,3,5,4,6,0};
+        int[] arr = {8,9,1,7,2,23,34,43};
         quickSort(arr,0,arr.length-1);
     }
 }

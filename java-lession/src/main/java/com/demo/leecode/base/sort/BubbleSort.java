@@ -142,8 +142,36 @@ public class BubbleSort {
     }
 
 
+    public static void sortTest1(int[] arr){
+        if(arr == null || arr.length <2){
+            return;
+        }
+        //最后的位置
+        int lastExchangeIndex = 0;
+        int sortBorder = arr.length - 1;
+        for (int i = 0; i < arr.length-1; i++) {
+            boolean flag = Boolean.TRUE;
+            //
+            for (int j = 0; j < sortBorder; j++) {
+                if (arr[j] > arr[j+1]) {
+                    flag = true;
+                    int temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                    // 保存最大数据的位置
+                    lastExchangeIndex = j;
+                }
+            }
+            sortBorder = lastExchangeIndex;
+            //如果是有序的那么就不需要排序了
+            if(flag){
+                break;
+            }
+        }
+    }
+
     public static void main(String[] args) {
-        int[] array = new int[]{12,1,23,43,12,45,46,47,48,49};
+        int[] array = new int[]{12,1,23,43,12,45,46,47,48,41};
         sort2(array);
     }
 }
