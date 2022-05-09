@@ -46,34 +46,6 @@ public class QuerySort {
         return left;
     }
 
-    /**
-     * 快速排序算法
-     *
-     * @param arr       数组
-     * @param left      左index
-     * @param right     右index
-     * @return
-     */
-    public static int partiton(int[] arr,int left,int right){
-        int povit = arr[left];
-
-        while (left<right){
-            //从左到右
-            while (left<right && arr[right] >= povit){
-                right--;
-            }
-            arr[left] = arr[right];
-            while (left<right && arr[left] <= povit){
-                left++;
-            }
-            arr[right] = arr[left];
-            //从右到左移动
-        }
-        arr[left] = povit;
-        //这个是基准的index
-        return left;
-    }
-
     public static void sort(int[] arr,int left,int right){
         if(left < right){
             int pivot = partition(arr,left,right);
