@@ -30,13 +30,13 @@ public class BinarySearch2 {
         while (l+1!=r){
             int mid = (l+r) / 2;
             //当中间数据大于5的時候是數據的值
-            if(isBlue(arr,mid,target)){
+            if(isBlue(arr,mid)){
                 l = mid;
             }else{
                 r = mid;
             }
         }
-        return r;
+        return l;
     }
 
     /**
@@ -52,16 +52,20 @@ public class BinarySearch2 {
      * @param target
      * @return
      */
-    public static boolean isBlue(int[] arr,int mid,int target){
-        if(arr[mid] > target){
-            return false;
+    public static boolean isBlue(int[] arr,int mid){
+        int target = arr.length / 2;
+        System.out.println(target);
+        if(arr[target] < arr[mid]){
+            return true;
         }
-        return true;
+        return false;
     }
 
+
+
     public static void main(String[] args) {
-        int[] arr = new int[]{1,2,3,3,3,4,5};
-        int a = search(arr,3);
+        int[] arr = new int[]{5,7,7,8,8,10};
+        int a = search(arr,6);
         System.out.println(a);
     }
 }
