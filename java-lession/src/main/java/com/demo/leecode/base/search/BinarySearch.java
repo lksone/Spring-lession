@@ -37,9 +37,35 @@ public class BinarySearch {
         return -1;
     }
 
+    /**
+     * 二分查找
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
+    public static int search(int[] nums, int target) {
+        if(nums ==null || nums.length == 0){
+            return -1;
+        }
+        int l =0;
+        int h =nums.length -1;
+        while(l<=h){
+            int m = (l+h)/2;
+            if(nums[m] == target){
+                return m;
+            }else if(nums[m] < target){
+                l = m + 1;
+            }else{
+                h = m -1;
+            }
+        }
+        return -1;
+    }
+
     public static void main(String[] args) {
-        int[] arr = new int[]{1, 2, 3, 4, 5, 9, 41, 369};
-        int index = sort(arr,4,0,arr.length-1);
+        int[] arr = new int[]{4};
+        int index = search(arr,4);
         System.out.println(index);
     }
 }
