@@ -13,7 +13,7 @@ import org.apache.zookeeper.CreateMode;
  **/
 public class ZkClient {
 
-    private final static String ZK_URL = "127.0.0.1:2181";
+    private final static String ZK_URL = "124.221.218.66:2181";
 
     private final static int CONNECTION_TIME_OUT= 3*1000;
 

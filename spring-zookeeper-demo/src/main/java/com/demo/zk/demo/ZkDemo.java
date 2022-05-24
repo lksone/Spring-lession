@@ -5,6 +5,10 @@ import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.apache.zookeeper.CreateMode;
+import org.apache.zookeeper.KeeperException;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author lks
@@ -14,15 +18,63 @@ import org.apache.zookeeper.CreateMode;
 public class ZkDemo {
 
 
-    private final static String ZKURL = "127.0.0.1:2181";
+    private final static String ZKURL = "124.221.218.66:2181";
 
-    private final static int CONNECTION_TIME_OUT = 3 * 1000;
+    private final static int CONNECTION_TIME_OUT = 3 * 10000;
 
-    private final static int SESSION_TIME_OUT = 3 * 1000;
+    private final static int SESSION_TIME_OUT = 3 * 10000;
+
+    public static List<String> res = new ArrayList<>();
+
+
+
+    /**
+     * 獲取子節點
+     *
+     * @param path
+     * @param watch
+     * @return
+     * @throws KeeperException
+     * @throws InterruptedException
+     */
+    public static List<String> getChildren(CuratorFramework curator,String path, boolean watch) throws KeeperException, InterruptedException
+    {
+        try
+        {
+            return watch ? curator.getChildren().watched().forPath(path) : curator.getChildren().forPath(path);
+        }
+        catch ( Exception e ) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * 获取下面所有的节点
+     *
+     * @param parentNode
+     * @return
+     */
+    public static List<String> getNode(CuratorFramework curator,  String parentNode) {
+        try {
+            List<String> tmpList = getChildren( curator, parentNode, false);
+            for (String tmp : tmpList) {
+                String childNode = parentNode.equals("/") ? parentNode + tmp : parentNode + "/" + tmp;
+                res.add(childNode);
+                getNode(curator,childNode);
+            }
+            return res;
+        } catch (KeeperException e) {
+            e.printStackTrace();
+            return null;
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
 
     public static void main(String[] args) throws Exception {
-        RetryPolicy policy = new ExponentialBackoffRetry(1000, 3);
+        RetryPolicy policy = new ExponentialBackoffRetry(3000, 3);
         //連接zookeeper连接数据
         CuratorFramework client = CuratorFrameworkFactory.builder()
                 .connectString(ZKURL)
@@ -41,6 +93,7 @@ public class ZkDemo {
                 //持久节点
                 .withMode(CreateMode.PERSISTENT)
                 .forPath("/aaa/bbb", "dfas".getBytes());
+        System.out.println(getNode(client, "/"));
 /*        //2. 创建永久有序节点
         client.create()
                 .creatingParentsIfNeeded()

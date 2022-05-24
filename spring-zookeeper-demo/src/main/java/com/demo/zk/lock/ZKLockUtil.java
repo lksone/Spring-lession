@@ -1,5 +1,6 @@
 package com.demo.zk.lock;
 
+import lombok.SneakyThrows;
 import org.apache.curator.shaded.com.google.common.base.Strings;
 import org.apache.zookeeper.*;
 import org.apache.zookeeper.data.Stat;
@@ -10,7 +11,7 @@ import java.util.List;
 
 public class ZKLockUtil {
 
-    private String zkQurom = "localhost:2181";
+    private String zkQurom = "124.221.218.66:2181";
 
     private String lockNameSpace = "/mylock";
 
@@ -59,18 +60,13 @@ public class ZKLockUtil {
                     }
                     try {
                         zk.exists(lockNameSpace + nodeString, new Watcher() {
+                            @SneakyThrows
                             @Override
                             public void process(WatchedEvent watchedEvent) {
                                 if (watchedEvent.getType() == Event.EventType.NodeDeleted) {
                                     thread.interrupt();
                                 }
-                                try {
-                                    zk.exists(lockNameSpace + nodeString, true);
-                                } catch (KeeperException e) {
-                                    e.printStackTrace();
-                                } catch (InterruptedException e) {
-                                    e.printStackTrace();
-                                }
+                                zk.exists(lockNameSpace + nodeString, true);
                             }
 
                         });
