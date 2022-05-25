@@ -1,4 +1,4 @@
-package com.demo.base.mode;
+package com.demo.base.mode.single;
 
 /**
  * @author lks
