@@ -9,13 +9,7 @@ package com.demo.string;
 public class StringDemo {
 
     public static void main(String[] args) {
-       // StrMethod1();
-      //  strMethod();
-
-        int i = Math.addExact(12, 12);
-        System.out.println(i);
-
-        System.out.println(12^24);
+        method();
     }
 
     private static void strMethod() {
@@ -35,4 +29,12 @@ public class StringDemo {
         System.out.println(msg == msg1);
     }
 
+
+    public static void method(){
+        //常量池中
+        String a = "123";
+        //堆中，主要是通过对象new的
+        String b = new String("123");
+        System.out.println(a==b);
+    }
 }
