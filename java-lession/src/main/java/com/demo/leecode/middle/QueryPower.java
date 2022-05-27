@@ -12,11 +12,28 @@ package com.demo.leecode.middle;
 public class QueryPower {
 
 
-
-    public static void method(){
-
+    /**
+     * 快速幂次方
+     *
+     * @param base
+     * @param power
+     */
+    public static long binExp(long base, long power) {
+        long result = 1;
+        while (power > 0) {
+            //如果有餘數的話，那麼power -1
+            if((power & 1) == 1){
+                power = power - 1;
+                result = result * base;
+            }
+            power = power >> 1;
+            base = base * base;
+        }
+        return result;
     }
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
+        long a = binExp(2, 3);
+        System.out.println(a);
     }
 }
