@@ -1,6 +1,8 @@
 package com.demo.servializer;
 
-public class User2 {
+import java.io.Serializable;
+
+public class User2 implements Serializable {
 
     private String username;
 

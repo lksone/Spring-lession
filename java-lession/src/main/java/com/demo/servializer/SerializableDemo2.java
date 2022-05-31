@@ -4,6 +4,13 @@ import java.io.*;
 
 public class SerializableDemo2 {
 
+    /**
+     * 如果不序列化就会报错
+     *
+     * @param args
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         //Write Obj to file
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("tempFile"));
