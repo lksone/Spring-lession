@@ -34,6 +34,12 @@
         <!--父類引入的jar-->
         <dependencies>
 
+            <dependency>
+                <groupId>com.alibaba.otter</groupId>
+                <artifactId>canal.client</artifactId>
+                <version>1.0.12</version>
+            </dependency>
+
             <!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
             <dependency>
                 <groupId>redis.clients</groupId>
