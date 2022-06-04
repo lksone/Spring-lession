@@ -46,6 +46,13 @@ public class QuerySort {
         return left;
     }
 
+
+    /**
+     * 快速排序
+     * @param arr
+     * @param left
+     * @param right
+     */
     public static void sort(int[] arr,int left,int right){
         if(left < right){
             int pivot = partition(arr,left,right);
