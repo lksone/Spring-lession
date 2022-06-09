@@ -9,9 +9,13 @@ public class Array2DNumber {
     public boolean findNumberIn2DArray(int[][] matrix, int target) {
         int i = matrix.length -1, j = 0;
         while(i<=matrix.length-1 && j>=0){
-            if(matrix[i][j]>target) j--;
-            if(matrix[i][j]<target) j++;
-            if(matrix[i][j]==target){
+            if (matrix[i][j] > target) {
+                j--;
+            }
+            if (matrix[i][j] < target) {
+                j++;
+            }
+            if (matrix[i][j] == target) {
                 return true;
             }
         }
