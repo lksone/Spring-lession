@@ -9,7 +9,12 @@ package com.demo.string;
 public class StringDemo {
 
     public static void main(String[] args) {
-        method();
+        String s = "hello";
+        String t = new String("hello");
+        System.out.println(Integer.toHexString(System.identityHashCode(s)));
+        System.out.println(Integer.toHexString(System.identityHashCode(t)));
+        s = "world";
+        System.out.println(Integer.toHexString(System.identityHashCode(s)));
     }
 
     private static void strMethod() {
