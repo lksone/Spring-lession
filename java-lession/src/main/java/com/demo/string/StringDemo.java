@@ -9,37 +9,11 @@ package com.demo.string;
 public class StringDemo {
 
     public static void main(String[] args) {
-        String s = "hello";
-        String t = new String("hello");
-        System.out.println(Integer.toHexString(System.identityHashCode(s)));
-        System.out.println(Integer.toHexString(System.identityHashCode(t)));
-        s = "world";
-        System.out.println(Integer.toHexString(System.identityHashCode(s)));
-    }
+        String a = "abc";
+        String intern = a.intern();
+        String b = new String("abc");
+        String c = new String("abc");
 
-    private static void strMethod() {
-        String msg1 = "123123";
-        String msg = new String("123") + new String("123");
-        String intern = msg.intern();
-        String.valueOf(12);
-        System.out.println(msg1 == intern);
-    }
-
-    /**
-     * false
-     */
-    private static void StrMethod1() {
-        String msg1 = "123123";
-        String msg = new String("123") + new String("123");
-        System.out.println(msg == msg1);
-    }
-
-
-    public static void method(){
-        //常量池中
-        String a = "123";
-        //堆中，主要是通过对象new的
-        String b = new String("123");
-        System.out.println(a==b);
+        System.out.println(intern==c);
     }
 }

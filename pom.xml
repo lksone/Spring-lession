@@ -21,6 +21,7 @@
         <module>java7-demo</module>
         <module>spring-apollo</module>
         <module>spring-demo-common-core</module>
+        <module>spring-boot-source-demo</module>
     </modules>
 
     <properties>
@@ -146,18 +147,6 @@
                 <scope>test</scope>
             </dependency>
 
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-api</artifactId>
-                <version>1.7.29</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>1.18.12</version>
-                <scope>provided</scope>
-            </dependency>
 
             <dependency>
                 <groupId>com.alibaba</groupId>
@@ -175,13 +164,6 @@
                 <groupId>org.apache.curator</groupId>
                 <artifactId>curator-recipes</artifactId>
                 <version>4.2.0</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.tomcat.embed</groupId>
-                <artifactId>tomcat-embed-core</artifactId>
-                <version>9.0.38</version>
-                <scope>compile</scope>
             </dependency>
 
             <dependency>
@@ -245,13 +227,6 @@
                 <artifactId>curator-framework</artifactId>
                 <version>4.2.0</version>
             </dependency>
-            <!-- 封装了一些高级特性，如：Cache事件监听、选举、分布式锁、分布式Barrier -->
-            <dependency>
-                <groupId>org.apache.curator</groupId>
-                <artifactId>curator-recipes</artifactId>
-                <version>4.2.0</version>
-            </dependency>
-
             <!--apollo加密数据-->
             <dependency>
                 <groupId>com.github.ulisesbocchio</groupId>
