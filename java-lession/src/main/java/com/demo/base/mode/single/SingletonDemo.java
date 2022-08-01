@@ -1,6 +1,10 @@
 package com.demo.base.mode.single;
 
 /**
+ *
+ *
+ * 单列模式，24种设计模式
+ *
  * @author lks
  * @E-mail 1056224715@qq.com.
  * @Since 1.0

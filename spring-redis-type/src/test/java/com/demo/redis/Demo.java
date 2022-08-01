@@ -2,6 +2,7 @@ package com.demo.redis;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.redisson.api.RCountDownLatch;
 import org.redisson.api.RLock;
 import org.redisson.api.RSemaphore;
 import org.redisson.api.RedissonClient;
@@ -59,5 +60,51 @@ public class Demo {
                 }
             }).start();
         }
+    }
+
+
+    /**
+     * 信号量
+     *
+     * @throws InterruptedException
+     */
+    @Test
+    public  void test3() throws InterruptedException {
+
+        RCountDownLatch anyCountDownLatch = redisson.getCountDownLatch("anyCountDownLatch");
+        // 同时最多允许3个线程获取锁，只有等到有3個線程一起才會去執行
+        anyCountDownLatch.trySetCount(3);
+        for(int i = 0; i < 3; i++) {
+            new Thread(new Runnable() {
+
+                @Override
+                public void run() {
+                    try {
+                        System.out.println(new Date() + "：线程[" + Thread.currentThread().getName() + "]在做一些操作，请耐心等待。。。。。。");
+                        Thread.sleep(3000);
+                        //获取锁
+                        RCountDownLatch localLatch = redisson.getCountDownLatch("anyCountDownLatch");
+                        localLatch.countDown();
+                        System.out.println(new Date() + "：线程[" + Thread.currentThread().getName() + "]执行countDown操作");
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }).start();
+            anyCountDownLatch.await();
+            System.out.println(new Date() + "：线程[" + Thread.currentThread().getName() + "]收到通知，有3个线程都执行了countDown操作，可以继续往下走");
+        }
+    }
+
+    @Test
+    public void test4(){
+        String s = new String("123");
+        String s2 = new String("123");
+        String s1 = "123";
+        System.out.println(s);
+        System.out.println(s1);
+
+        System.out.println(s.equals(s2));
+        System.out.println(s1.equals(s));
     }
 }
