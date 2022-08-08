@@ -17,9 +17,17 @@
     </properties>
 
     <dependencies>
+        <!--pdf文档-->
         <dependency>
             <groupId>com.aspose</groupId>
             <artifactId>aspose-pdf</artifactId>
+            <version>22.6</version>
+        </dependency>
+
+        <!--word文档-->
+        <dependency>
+            <groupId>com.aspose</groupId>
+            <artifactId>aspose-words</artifactId>
             <version>22.6</version>
         </dependency>
 
@@ -28,6 +36,13 @@
             <artifactId>junit</artifactId>
             <version>4.11</version>
             <scope>test</scope>
+        </dependency>
+
+        <!--反編譯工具-->
+        <dependency>
+            <groupId>org.javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>3.27.0-GA</version>
         </dependency>
     </dependencies>
 
