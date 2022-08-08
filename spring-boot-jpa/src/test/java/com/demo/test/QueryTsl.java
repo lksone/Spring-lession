@@ -1,13 +1,12 @@
 package com.demo.test;
 
 import com.demo.jpa.JpaApplication;
-import com.demo.jpa.respository.AccountRepository;
+import com.demo.jpa.service.AccoutService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import javax.annotation.Resource;
 
 /**
  * @author lks
@@ -19,12 +18,12 @@ import javax.annotation.Resource;
 @SpringBootTest(classes = JpaApplication.class)
 public class QueryTsl {
 
-    @Resource
-    private AccountRepository repository;
-
+    @Autowired
+    private AccoutService accoutService;
 
 
     @Test
-    public static void method(){
+    public void method() {
+        accoutService.findOne();
     }
 }
