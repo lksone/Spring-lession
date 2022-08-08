@@ -24,6 +24,7 @@
         <module>spring-boot-source-demo</module>
         <module>spring-redis-type</module>
         <module>spring-boot-jpa</module>
+        <module>spring-repose-demo</module>
     </modules>
 
     <properties>
