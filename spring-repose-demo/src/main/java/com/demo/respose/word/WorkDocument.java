@@ -69,7 +69,6 @@ public class WorkDocument {
         //插入分页符
         builder.insertBreak(BreakType.PAGE_BREAK);
         builder.writeln("Page3");
-
         doc.save("DocumentBuilder.HeadersAndFooters.docx", SaveFormat.DOCX);
     }
 
@@ -256,6 +255,15 @@ public class WorkDocument {
             System.out.println(node.getText());
             System.out.println("00000000000000000000000000000000000000000000000000000000");
         }
+    }
+
+
+    /**
+     * 添加数据信息
+     */
+    public static void testProperties() throws Exception {
+        //文档数据信息
+        Document document = new Document();
     }
 
     public static void method() throws Exception {
