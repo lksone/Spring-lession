@@ -117,15 +117,25 @@ public class WordWaterMark {
         }
     }
 
+    /**
+     * 刪除水印
+     * @param document
+     */
+    public static void removeWatermark(Document document){
+        for (Section section : document.getSections()) {
+            removeWatermarkFromHeader(section,HeaderFooterType.HEADER_PRIMARY);
+        }
+    }
+
 
     /**
      * 移除指定的section的水印
      *
-     * @param section    部分？？待定
-     * @param headerType 类型
+     * @param section           部分？？待定
+     * @param headerFooterType  类型
      */
-    public static void removeWatermarkFromHeader(Section section, int headerType) {
-        HeaderFooter headerFooter = section.getHeadersFooters().getByHeaderFooterType(headerType);
+    public static void removeWatermarkFromHeader(Section section, int headerFooterType) {
+        HeaderFooter headerFooter = section.getHeadersFooters().getByHeaderFooterType(headerFooterType);
         if (headerFooter != null) {
             //存在就删除
             headerFooter.removeAllChildren();
@@ -135,7 +145,8 @@ public class WordWaterMark {
 
     public static void main(String[] args) throws Exception {
         Document waterMark = new Document("bb.docx");
-        insertWaterMark(waterMark, "李科胜");
+       // insertWaterMark(waterMark, "李科胜");
+        removeWatermark(waterMark);
         waterMark.save("bb.docx", SaveFormat.DOCX);
     }
 }
