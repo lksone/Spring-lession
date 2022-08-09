@@ -17,15 +17,21 @@ import java.io.InputStream;
  */
 public class WordDemo {
 
+    /**
+     * 获取权限的licence的权限
+     */
     private static InputStream licence;
 
+    /**
+     * 字節流
+     */
     private static InputStream inputStream;
 
     /**
      * 插入水印
      *
-     * @param document
-     * @param watermarkText
+     * @param document              document對象
+     * @param watermarkText         水印字体
      */
     public static void insertWatermarkText(Document document, String watermarkText) throws Exception {
         //创建一个shape 形状，水印
@@ -57,8 +63,8 @@ public class WordDemo {
         //插入水印
         for (Section section : document.getSections()) {
             //三种不同的类型
-            insertWatermarkHeader(watermarkPara, section, HeaderFooterType.HEADER_PRIMARY);
-            insertWatermarkHeader(watermarkPara, section, HeaderFooterType.HEADER_FIRST);
+           // insertWatermarkHeader(watermarkPara, section, HeaderFooterType.HEADER_PRIMARY);
+            //insertWatermarkHeader(watermarkPara, section, HeaderFooterType.HEADER_FIRST);
             insertWatermarkHeader(watermarkPara, section, HeaderFooterType.HEADER_EVEN);
         }
 
@@ -148,11 +154,16 @@ public class WordDemo {
     }
 
     public static void main(String[] args) throws Exception {
-        //插入数据图片
-        Document document = new Document("D:\\workspace5\\Spring-lession\\bb.docx");
+        //1、插入数据图片
+       /* Document document = new Document("D:\\workspace5\\Spring-lession\\bb.docx");
         insertInmage(document, "D:\\workspace5\\Spring-lession\\123.jpeg");
         //保存数据
         document.save("D:\\workspace5\\Spring-lession\\bb.docx", SaveFormat.JPEG);
-        System.out.println("运行完成");
+        System.out.println("运行完成");*/
+
+
+        Document waterMark = new Document("bb.docx");
+        insertWatermarkText(waterMark,"李科胜");
+        waterMark.save("bb.docx",SaveFormat.DOCX);
     }
 }
