@@ -5,6 +5,7 @@ import com.aspose.words.Shape;
 import com.aspose.words.*;
 
 import java.awt.*;
+import java.awt.geom.Rectangle2D;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Date;
@@ -175,8 +176,10 @@ public class WorkDocument {
     public static void addImageDocument2() throws Exception {
         Document document = new Document();
         DocumentBuilder builder = new DocumentBuilder(document);
-        //需要添加的形状
-        Shape shape = builder.insertImage("123.jpeg");
+        //需要添加的形状,往内容中插入数据信息
+        // Shape shape = builder.insertImage("123.jpeg");
+        //插入形状
+        Shape shape = builder.insertShape(ShapeType.STAR, 100, 100);
         //设置包裹类型
         shape.setWrapType(WrapType.NONE);
         //设置文本后面
@@ -194,8 +197,73 @@ public class WorkDocument {
         document.save("CreateFloatingPageCenter.docx");
     }
 
+    /**
+     * 删除形状
+     *
+     * @throws Exception
+     */
+    public static void removeShape() throws Exception {
+        Document doc = new Document();
+        DocumentBuilder builder = new DocumentBuilder(doc);
+        //创建两个图案信息
+        /*builder.insertShape(ShapeType.RECTANGLE, 400.0, 400.0);
+        builder.insertShape(ShapeType.STAR, 300.0, 300.0);*/
+        //shape图案信息是否一个GroupShape
+        GroupShape group = new GroupShape(doc);
+        group.setBounds(new Rectangle2D.Float(100f, 50f, 200f, 100f));
+        //设置坐标原点
+        group.setCoordOrigin(new Point(-1000, -500));
+        //shape的类型
+        Shape subShape = new Shape(doc, ShapeType.CUBE);
+        subShape.setWidth(500.0);
+        subShape.setHeight(700.0);
+        subShape.setLeft(0.0);
+        subShape.setTop(0.0);
+
+        group.appendChild(subShape);
+        builder.insertNode(group);
+        //查看获取数据图案中的数据是否获取的shape类型进行删除操作
+        /*NodeCollection shapes = doc.getChildNodes(NodeType.SHAPE, true);
+        shapes.clear();*/
+        NodeCollection groupShapes = doc.getChildNodes(NodeType.GROUP_SHAPE, true);
+        groupShapes.clear();
+        doc.save("removeImage.docx");
+    }
+
+    /**
+     * 读取文件内容
+     */
+    public static void readWord() throws Exception {
+        Document doc = new Document("readWord.docx");
+        //段落类型
+        for (Object obj : doc.getChildNodes(NodeType.PARAGRAPH, true)) {
+            Paragraph para = (Paragraph) obj;
+            System.out.println("+=============================");
+            System.out.println(para.toString(SaveFormat.TEXT));
+            System.out.println("+=============================");
+        }
+        for (Object obj : doc.getChildNodes(NodeType.RUN, true)) {
+            Run run = (Run) obj;
+            Font font = run.getFont();
+            System.out.println("--------------------------------------------");
+            System.out.println(font.getName() + "," + font.getSize());
+            System.out.println(run.getText());
+            System.out.println("--------------------------------------------");
+        }
+        for (Object childNode : doc.getChildNodes(NodeType.BODY, true)) {
+            Body node = (Body) childNode;
+            System.out.println("00000000000000000000000000000000000000000000000000000000");
+            System.out.println(node.getText());
+            System.out.println("00000000000000000000000000000000000000000000000000000000");
+        }
+    }
+
+    public static void method() throws Exception {
+        Document document = new Document();
+        FileInputStream fileInputStream = new FileInputStream("");
+    }
+
     public static void main(String[] args) throws Exception {
-        addImageDocument2();
         System.out.println("执行完成");
     }
 
