@@ -10,7 +10,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.demo</groupId>
+    <groupId>com.demo.web</groupId>
     <artifactId>spring-web-demo</artifactId>
     <version>1.0-SNAPSHOT</version>
 

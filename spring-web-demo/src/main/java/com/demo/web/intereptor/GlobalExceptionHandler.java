@@ -1,6 +1,6 @@
-package com.demo.intereptor;
+package com.demo.web.intereptor;
 
-import com.demo.common.Result;
+import com.demo.web.common.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.websocket.AuthenticationException;
 import org.springframework.core.annotation.Order;

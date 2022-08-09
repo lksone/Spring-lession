@@ -1,4 +1,4 @@
-package com.demo.intereptor;
+package com.demo.web.intereptor;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

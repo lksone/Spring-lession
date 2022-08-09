@@ -1,4 +1,4 @@
-package com.demo.common;
+package com.demo.web.common;
 
 /**
  * @author lks

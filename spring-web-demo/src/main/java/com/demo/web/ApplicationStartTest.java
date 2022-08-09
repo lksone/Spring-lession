@@ -1,4 +1,4 @@
-package com.demo;
+package com.demo.web;
 
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import org.apache.catalina.LifecycleException;

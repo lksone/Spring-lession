@@ -1,4 +1,4 @@
-package com.demo.canal;
+package com.demo.web.canal;
 
 import com.alibaba.otter.canal.client.CanalConnector;
 import com.alibaba.otter.canal.client.CanalConnectors;

@@ -1,4 +1,4 @@
-package com.demo.common;
+package com.demo.web.common;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;

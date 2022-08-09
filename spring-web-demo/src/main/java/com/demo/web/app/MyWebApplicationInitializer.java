@@ -1,4 +1,4 @@
-package com.demo.app;
+package com.demo.web.app;
 
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;

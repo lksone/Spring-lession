@@ -1,4 +1,4 @@
-package com.demo.intereptor;
+package com.demo.web.intereptor;
 
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;

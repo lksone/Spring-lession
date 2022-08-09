@@ -1,4 +1,4 @@
-package com.demo.vo;
+package com.demo.web.vo;
 
 /**
  * @author lks
