@@ -2,9 +2,8 @@ package com.demo.respose.word;
 
 import com.aspose.words.*;
 
-import java.io.ByteArrayInputStream;
-import java.io.FileInputStream;
-import java.io.InputStream;
+import java.io.*;
+import java.nio.file.Files;
 import java.text.MessageFormat;
 import java.util.Date;
 import java.util.Iterator;
@@ -110,6 +109,26 @@ public class DemoImage {
 
     }
     public static void main(String[] args) throws Exception {
-        method();
+
+        System.out.println(method("bb.docx"));
+    }
+
+    public static String method(String fileName) throws Exception {
+
+        FileFormatInfo fileFormatInfo = FileFormatUtil.detectFileFormat("");
+        String fileType = "Undetermined";
+        final File file = new File(fileName);
+        try
+        {
+            fileType = Files.probeContentType(file.toPath());
+        }
+        catch (IOException ioException)
+        {
+            System.out.println(
+                    "ERROR: Unable to determine file type for " + fileName
+                            + " due to exception " + ioException);
+        }
+        return fileType;
+
     }
 }

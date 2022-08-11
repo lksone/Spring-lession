@@ -122,6 +122,7 @@ public class WordWaterMark {
      * @param document
      */
     public static void removeWatermark(Document document){
+        //huo
         for (Section section : document.getSections()) {
             removeWatermarkFromHeader(section,HeaderFooterType.HEADER_PRIMARY);
         }

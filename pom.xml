@@ -25,6 +25,7 @@
         <module>spring-redis-type</module>
         <module>spring-boot-jpa</module>
         <module>spring-repose-demo</module>
+        <module>spring-logback-demo</module>
     </modules>
 
     <properties>
