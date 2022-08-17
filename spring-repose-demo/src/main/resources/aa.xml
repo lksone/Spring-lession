@@ -1,0 +1,30 @@
+<root>
+    <flw>
+        <name>aa</name>
+        <age>22</age>
+        <instance_info>
+            <num>1</num>
+            <code>0</code>
+            <instance>
+                <ip>10.1.1.2</ip>
+                <mask>9999</mask>
+            </instance>
+            <instance>
+                <ip>10.1.1.5</ip>
+                <mask>717</mask>
+            </instance>
+        </instance_info>
+        <instance_info>
+            <num>2</num>
+            <code>33</code>
+            <instance>
+                <ip>10.1.1.2</ip>
+                <mask>9999</mask>
+            </instance>
+            <instance>
+                <ip>10.1.1.9</ip>
+                <mask>878</mask>
+            </instance>
+        </instance_info>
+    </flw>
+</root>
