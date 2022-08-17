@@ -146,8 +146,8 @@ public class WordWaterMark {
 
     public static void main(String[] args) throws Exception {
         Document waterMark = new Document("bb.docx");
-       // insertWaterMark(waterMark, "李科胜");
-        removeWatermark(waterMark);
+        insertWaterMark(waterMark, "李科胜");
+       // removeWatermark(waterMark);
         waterMark.save("bb.docx", SaveFormat.DOCX);
     }
 }

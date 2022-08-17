@@ -161,7 +161,6 @@ public class WordDemo {
         document.save("D:\\workspace5\\Spring-lession\\bb.docx", SaveFormat.JPEG);
         System.out.println("运行完成");*/
 
-
         Document waterMark = new Document("bb.docx");
         insertWatermarkText(waterMark,"李科胜");
         waterMark.save("bb.docx",SaveFormat.DOCX);

@@ -86,7 +86,7 @@ public class DemoImage {
      * t
      * @throws Exception
      */
-    public static void method() throws Exception {
+    public static void writeData() throws Exception {
         Document doc = new Document();
         CustomDocumentProperties properties = doc.getCustomDocumentProperties();
         properties.add("Authorized", true);
@@ -106,6 +106,10 @@ public class DemoImage {
         properties.removeAt(1);
         properties.remove("Authorized Revision");
         properties.clear();
+
+    }
+
+    public static void readData(){
 
     }
     public static void main(String[] args) throws Exception {

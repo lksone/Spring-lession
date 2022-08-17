@@ -17,6 +17,16 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.12.0</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.15</version>
+        </dependency>
         <!--pdf文档-->
         <dependency>
             <groupId>com.aspose</groupId>
@@ -29,7 +39,12 @@
             <groupId>com.aspose</groupId>
             <artifactId>aspose-words</artifactId>
             <version>22.7</version>
-            <classifier>jdk17</classifier>
+        </dependency>
+
+        <dependency>
+            <groupId>com.aspose</groupId>
+            <artifactId>aspose-slides</artifactId>
+            <version>22.7</version>
         </dependency>
 
 

@@ -26,4 +26,10 @@ public class QueryTsl {
     public void method() {
         accoutService.findOne();
     }
+
+
+    @Test
+    public void method1() {
+        accoutService.findOneMethod();
+    }
 }
