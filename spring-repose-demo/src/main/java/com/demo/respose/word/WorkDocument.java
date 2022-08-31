@@ -158,13 +158,19 @@ public class WorkDocument {
         //添加图片
         Shape headerImage = imageWriter.insertImage("123.jpeg");
         // equals to one inch
-        headerImage.setWidth(1 * 72);
-        headerImage.setHeight(1 * 72);
+      //  headerImage.setWidth(1 * 72);
+      //  headerImage.setHeight(1 * 72);
+        headerImage.setAlternativeText("likesheng");
+        int x =10;
+        int y =10;
+        int with =50;
+        int height =100;
+        headerImage.setBounds(new Rectangle2D.Float(x,y,with,height));
         //移动到最后的段落的后面,移动的位置
         imageWriter.moveTo(AddImagesToWordDOC.getLastSection().getBody().getFirstParagraph());
         //其他的方法
-        Shape imageAsLinkToFile = imageWriter.insertImage("123.jpeg");
-        imageAsLinkToFile.getImageData().setSourceFullName("123.jpeg");
+        /*Shape imageAsLinkToFile = imageWriter.insertImage("123.jpeg");
+        imageAsLinkToFile.getImageData().setSourceFullName("123.jpeg");*/
         AddImagesToWordDOC.save("Images.docx");
     }
 
@@ -267,12 +273,13 @@ public class WorkDocument {
     }
 
     public static void method() throws Exception {
-        Document document = new Document();
-        FileInputStream fileInputStream = new FileInputStream("");
+        Document document = new Document("bb.docx");
     }
 
     public static void main(String[] args) throws Exception {
         System.out.println("执行完成");
+        addImageDocument();
+        method();
     }
 
 }

@@ -100,6 +100,7 @@ public class DemoImage {
             System.out.println(MessageFormat.format("Name: \"{0}\"\n\tType: \"{1}\"\n\tValue: \"{2}\"", property.getName(), property.getType(), property.getValue()));
         }
         DocumentBuilder builder = new DocumentBuilder(doc);
+        //修改数据信息
         FieldDocProperty field = (FieldDocProperty) builder.insertField(" DOCPROPERTY \"Authorized By\"");
         field.update();
         doc.save("cc.doc");

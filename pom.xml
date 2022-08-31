@@ -26,6 +26,7 @@
         <module>spring-boot-jpa</module>
         <module>spring-repose-demo</module>
         <module>spring-logback-demo</module>
+        <module>spring-boot-socket-demo</module>
     </modules>
 
     <properties>
