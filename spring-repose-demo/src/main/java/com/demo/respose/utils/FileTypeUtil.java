@@ -108,7 +108,7 @@ public class FileTypeUtil {
      * @param b
      * @return fileHeaderHex - 文件头，即文件魔数
      */
-    private final static String bytesToHexString(byte[] b) {
+    private  static String bytesToHexString(byte[] b) {
         StringBuilder stringBuilder = new StringBuilder();
         if (b == null || b.length <= 0) {
             return null;

@@ -58,8 +58,6 @@
             <version>21.10</version>
             <classifier>javadoc</classifier>
         </dependency>
-
-
         <dependency>
             <groupId>com.aspose</groupId>
             <artifactId>aspose-cells</artifactId>
@@ -77,6 +75,11 @@
             <groupId>com.aspose</groupId>
             <artifactId>aspose-barcode</artifactId>
             <version>22.8</version>
+        </dependency>
+       <dependency>
+            <groupId>com.aspose</groupId>
+            <artifactId>aspose-diagram</artifactId>
+            <version>22.8.0</version>
         </dependency>
 
         <dependency>
@@ -104,6 +107,45 @@
             <artifactId>javassist</artifactId>
             <version>3.27.0-GA</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.ofdrw</groupId>
+            <artifactId>ofdrw-full</artifactId>
+            <version>1.18.0</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.jvnet.com4j</groupId>
+            <artifactId>tlbimp</artifactId>
+            <version>2.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jvnet.com4j</groupId>
+            <artifactId>com4j</artifactId>
+            <version>2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>args4j</groupId>
+            <artifactId>args4j</artifactId>
+            <version>2.33</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>5.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-examples</artifactId>
+            <version>5.2.2</version>
+        </dependency>
+
     </dependencies>
 
     <repositories>
@@ -111,6 +153,12 @@
             <id>AsposeJavaAPI</id>
             <name>Aspose Java API</name>
             <url>https://repository.aspose.com/repo/</url>
+        </repository>
+
+        <repository>
+            <id>alimaven</id>
+            <name>aliyun maven</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
         </repository>
     </repositories>
 </project>
