@@ -1,11 +1,20 @@
 package com.demo.respose.ofd;
 
+import org.dom4j.Document;
+import org.dom4j.DocumentType;
 import org.ofdrw.core.annotation.pageannot.AnnotType;
+import org.ofdrw.core.basicStructure.pageObj.Page;
+import org.ofdrw.core.basicType.ST_Box;
+import org.ofdrw.font.FontName;
 import org.ofdrw.layout.OFDDoc;
 import org.ofdrw.layout.StreamCollect;
+import org.ofdrw.layout.VirtualPage;
 import org.ofdrw.layout.edit.Annotation;
+import org.ofdrw.layout.element.Img;
 import org.ofdrw.layout.element.PageAreaFiller;
 import org.ofdrw.layout.element.Paragraph;
+import org.ofdrw.layout.element.canvas.FontSetting;
+import org.ofdrw.layout.exception.DocReadException;
 import org.ofdrw.reader.OFDReader;
 
 import java.io.IOException;
@@ -22,7 +31,38 @@ public class OFDDemo {
 
 
     public static void main(String[] args) throws IOException {
-        addImage();
+        readImage();
+    }
+
+
+    public static void add() {
+        Path srcP = Paths.get("D:\\workspace5\\Spring-lession\\spring-repose-demo\\a.ofd");
+        Path outP = Paths.get("D:\\workspace5\\Spring-lession\\spring-repose-demo\\a.ofd");
+        try (OFDReader reader = new OFDReader(srcP); OFDDoc ofdDoc = new OFDDoc(reader, outP)) {
+            Double width = ofdDoc.getPageLayout().getWidth();
+            Double height = ofdDoc.getPageLayout().getHeight();
+            Annotation annotation = new Annotation(new ST_Box(0d, 0d, width, height), AnnotType.Watermark, ctx -> {
+                FontSetting setting = new FontSetting(8, FontName.SimSun.font());
+                ctx.setFillColor(170, 160, 165)
+                        .setFont(setting)
+                        .setGlobalAlpha(0.4);
+                for (int i = 0; i <= 8; i++) {
+                    for (int j = 0; j <= 8; j++) {
+                        ctx.save();
+                        ctx.translate(22.4 * i, j * 50);
+                        ctx.rotate(45);
+                        ctx.fillText("保密资料", 10, 10);
+                        ctx.restore();
+                    }
+                }
+            });
+            ofdDoc.addAnnotation(1, annotation);
+        } catch (DocReadException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("生成文档位置：" + outP.toAbsolutePath().toString());
     }
 
     private static void addImage() throws IOException {
@@ -44,8 +84,39 @@ public class OFDDemo {
         System.out.println("生成文档位置：" + outP.toAbsolutePath().toString());
     }
 
+    private static void addImage2() throws IOException {
+        Path srcP = Paths.get("D:\\workspace5\\Spring-lession\\spring-repose-demo\\b.ofd");
+        Path outP = Paths.get("D:\\workspace5\\Spring-lession\\spring-repose-demo\\b.ofd");
+        Path imgPath = Paths.get("D:\\workspace5\\Spring-lession\\spring-repose-demo\\34.jpeg");
+        try (OFDReader reader = new OFDReader(srcP);
+             OFDDoc ofdDoc = new OFDDoc(reader, outP)) {
+            for (int i = 1; i <= reader.getPageList().size(); i++) {
+                VirtualPage avPage = ofdDoc.getAVPage(i);
+                Img img = new Img(50, 12, imgPath);
+                img.setPadding(0.5d);
+                img.setBorder(0.5d);
+                img.setOpacity(0.5d);
+                avPage.add(img);
+                ofdDoc.addVPage(avPage);
+            }
+        }
+        System.out.println("生成文档位置：" + outP.toAbsolutePath().toString());
+    }
+
+    private static void readImage() throws IOException {
+        Path srcP = Paths.get("D:\\workspace5\\Spring-lession\\spring-repose-demo\\a.ofd");
+        try (OFDReader reader = new OFDReader(srcP)) {
+            Path workDir = reader.getWorkDir();
+            System.out.println(workDir.toAbsolutePath().toString());
+            Page page = reader.getPage(1);
+            Document document = page.getDocument();
+            DocumentType docType = document.getDocType();
+
+        }
+    }
+
     private static void addWrite() throws IOException {
-        Path path = Paths.get("D:\\workspace5\\Spring-lession\\spring-repose-demo\\a.ofd").toAbsolutePath();
+        Path path = Paths.get("D:\\workspace5\\Spring-lession\\spring-repose-demo\\b.ofd").toAbsolutePath();
         try (OFDDoc ofdDoc = new OFDDoc(path)) {
             Paragraph p = new Paragraph("你好呀，OFD Reader&Writer！", 8d);
             ofdDoc.add(p);

@@ -1,8 +1,6 @@
 package com.demo.respose.vsd;
 
-import com.aspose.diagram.Diagram;
-import com.aspose.diagram.Page;
-import com.aspose.diagram.SaveFileFormat;
+import com.aspose.diagram.*;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,14 +15,40 @@ public class VsdInsertShape {
 
 
     public static void main(String[] args) throws Exception {
-        String dataDir = "C:\\Users\\Administrator\\Desktop\\output.vsdx";
+        insertImage();
+        String dataDir = "C:\\Users\\Administrator\\Desktop\\132.vsdx";
+        Diagram diagram = new Diagram(dataDir);
+        for (Object page : diagram.getPages()) {
+            if(page instanceof Page){
+                Page page1 = (Page) page;
+                for (int i = 0; i < page1.getShapes().getCount(); i++) {
+                    Shape shape = page1.getShapes().get(i);
+                    System.out.println("shape name is "+shape.getName());
+                }
+            }
+        }
+
+    }
+
+
+    /**
+     * 插入图片信息
+     * @throws Exception
+     */
+    private static void insertImage() throws Exception {
+        String dataDir = "C:\\Users\\Administrator\\Desktop\\132.vsdx";
         Diagram diagram = new Diagram(dataDir);
         Page page = diagram.getPages().getPage(0);
         double pinX = 3, pinY = 3, width = 4, hieght = 4;
-        File file = new File("D:\\workspace5\\Spring-lession\\spring-repose-demo\\34.jpeg");
+        File file = new File("D:\\workspace5\\Spring-lession\\spring-repose-demo\\1662521435103.png");
         FileInputStream fis = new FileInputStream(file);
         long l = page.addShape(pinX, pinY, width, hieght, fis);
-        page.getShapes().getShape(l).getImage().getTransparency().setValue(0.5);
+        Image image = page.getShapes().getShape(l).getImage();
+        image.getTransparency().setValue(0.5);
+        image.setDel(1);
+        Shape shape = page.getShapes().getShape(l);
+        shape.sendToBack();
+        page.getShapes().getShape(l).setName("这是一个信息");
         diagram.save(dataDir, SaveFileFormat.VSDX);
     }
 }

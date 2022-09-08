@@ -45,7 +45,7 @@
             <artifactId>aspose-words</artifactId>
             <version>22.6</version>
         </dependency>
-
+        <!--ppt-->
         <dependency>
             <groupId>com.aspose</groupId>
             <artifactId>aspose-slides</artifactId>
@@ -80,6 +80,21 @@
             <groupId>com.aspose</groupId>
             <artifactId>aspose-diagram</artifactId>
             <version>22.8.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.aspose</groupId>
+            <artifactId>aspose-imaging</artifactId>
+            <version>22.4</version>
+            <classifier>jdk16</classifier>
+        </dependency>
+
+        <!-- if you need a documentation, please add the following dependency. For example it could be useful for IDE. -->
+        <dependency>
+            <groupId>com.aspose</groupId>
+            <artifactId>aspose-imaging</artifactId>
+            <version>22.4</version>
+            <classifier>javadoc</classifier>
         </dependency>
 
         <dependency>
