@@ -1,8 +1,7 @@
 package com.demo.respose.image;
 
-import java.io.BufferedInputStream;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 /**
  * @author lks
@@ -13,10 +12,17 @@ import java.io.IOException;
 public class ImageDemo {
 
     public static void main(String[] args) throws IOException {
-        String path = "";
-
+        String path = "D:\\workspace5\\Spring-lession\\spring-repose-demo\\testFile\\34.jpeg";
         BufferedInputStream bis = new BufferedInputStream(new FileInputStream(path));
-
+        int read = bis.read();
+        byte[] bte1 = new byte[1024];
+        BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(path));
+        while (bis.read(bte1) != -1) {
+            bos.write(bte1, 0, 1);
+        }
+        byte[] bytes = "1231312".getBytes(StandardCharsets.UTF_8);
+        bos.write(bytes);
+        bos.close();
         bis.close();
     }
 

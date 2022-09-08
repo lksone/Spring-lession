@@ -18,7 +18,7 @@ public class GetFileHeader {
 
     static {
         // images
-        mFileTypes.put("FFD8FF", "jpg");
+        mFileTypes.put("FFD8FFE0", "jpg");
         mFileTypes.put("89504E47", "png");
         mFileTypes.put("47494638", "gif");
         mFileTypes.put("49492A00", "tif");
@@ -58,13 +58,13 @@ public class GetFileHeader {
      * @return 文件头信息
      */
     public static String getFileType(String filePath) {
-        System.out.println(getFileHeader(filePath));
-        System.out.println(mFileTypes.get(getFileHeader(filePath)));
         return mFileTypes.get(getFileHeader(filePath));
     }
 
     /**
-     * 根据文件路径获取文件头信息(header的前4个字节)
+     * 根据文件路径获取文件头信息
+     * <p>
+     * (header的前4个字节)
      *
      * @param filePath 文件路径
      * @return 文件头信息
@@ -106,8 +106,7 @@ public class GetFileHeader {
     }
 
     public static void main(String[] args) throws Exception {
-        System.out.println("脚本之家测试结果：");
-        final String fileType = getFileType("D:\\php5ts.dll");
+        final String fileType = getFileType("D:\\workspace5\\Spring-lession\\spring-repose-demo\\testFile\\pexels-jonathan-faria-8581948.jpg");
         System.out.println(fileType);
     }
 }
