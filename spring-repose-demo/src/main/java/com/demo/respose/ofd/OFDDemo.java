@@ -32,16 +32,19 @@ public class OFDDemo {
 
 
     public static void main(String[] args) throws IOException {
-        File f = new File(OFDDemo.class.getResource("/").getPath());
+        File f = new File(OFDDemo.class.getResource("/a.docx").getPath());
         System.out.println(f.getAbsolutePath());
+        System.out.println(f.exists());
     }
 
     /**
      * 添加水印信息，可以写入文字的方式
      */
     public static void addWaterMarkToWord() {
-        Path srcP = Paths.get("D:\\workspace5\\Spring-lession\\spring-repose-demo\\a.ofd");
-        Path outP = Paths.get("D:\\workspace5\\Spring-lession\\spring-repose-demo\\a.ofd");
+        String resourcePathA = OFDDemo.class.getResource("a.ofd").getPath();
+        String resourcePathB = OFDDemo.class.getResource("a.ofd").getPath();
+        Path srcP = Paths.get(resourcePathA);
+        Path outP = Paths.get(resourcePathB);
         try (OFDReader reader = new OFDReader(srcP); OFDDoc ofdDoc = new OFDDoc(reader, outP)) {
             Double width = ofdDoc.getPageLayout().getWidth();
             Double height = ofdDoc.getPageLayout().getHeight();
@@ -78,16 +81,19 @@ public class OFDDemo {
      * @throws IOException
      */
     private static void addWaterMarkToImage() throws IOException {
-        Path srcP = Paths.get("D:\\workspace5\\Spring-lession\\spring-repose-demo\\a.ofd");
-        Path outP = Paths.get("D:\\workspace5\\Spring-lession\\spring-repose-demo\\a.ofd");
-        Path imgPath = Paths.get("D:\\workspace5\\Spring-lession\\spring-repose-demo\\34.jpeg");
+        String srcPPath = OFDDemo.class.getResource("a.ofd").getPath();
+        String outPPath = OFDDemo.class.getResource("a.ofd").getPath();
+        String imgPPath = OFDDemo.class.getResource("34.jpeg").getPath();
+        Path srcP = Paths.get(srcPPath);
+        Path outP = Paths.get(outPPath);
+        Path imgP = Paths.get(imgPPath);
 
         try (OFDReader reader = new OFDReader(srcP);
              OFDDoc ofdDoc = new OFDDoc(reader, outP)) {
             for (int i = 1; i <= reader.getPageList().size(); i++) {
                 Annotation annotation = new Annotation(70d, 100d, 60d, 60d, AnnotType.Watermark, ctx -> {
                     ctx.setGlobalAlpha(1d);
-                    ctx.drawImage(imgPath, 0, 0, 40d, 40d);
+                    ctx.drawImage(imgP, 0, 0, 40d, 40d);
                 });
                 annotation.setRemark("测试数据");
                 ofdDoc.addAnnotation(i, annotation);
@@ -97,9 +103,12 @@ public class OFDDemo {
     }
 
     private static void addImage2() throws IOException {
-        Path srcP = Paths.get("D:\\workspace5\\Spring-lession\\spring-repose-demo\\b.ofd");
-        Path outP = Paths.get("D:\\workspace5\\Spring-lession\\spring-repose-demo\\b.ofd");
-        Path imgPath = Paths.get("D:\\workspace5\\Spring-lession\\spring-repose-demo\\34.jpeg");
+        String srcPPath = OFDDemo.class.getResource("b.ofd").getPath();
+        String outPPath = OFDDemo.class.getResource("b.ofd").getPath();
+        String imgPPath = OFDDemo.class.getResource("34.jpeg").getPath();
+        Path srcP = Paths.get(srcPPath);
+        Path outP = Paths.get(outPPath);
+        Path imgPath = Paths.get(imgPPath);
         try (OFDReader reader = new OFDReader(srcP);
              OFDDoc ofdDoc = new OFDDoc(reader, outP)) {
             for (int i = 1; i <= reader.getPageList().size(); i++) {
@@ -117,7 +126,8 @@ public class OFDDemo {
 
 
     private static void readImage() throws IOException {
-        Path srcP = Paths.get("D:\\workspace5\\Spring-lession\\spring-repose-demo\\a.ofd");
+        String srcPPath = OFDDemo.class.getResource("a.ofd").getPath();
+        Path srcP = Paths.get(srcPPath);
         try (OFDReader reader = new OFDReader(srcP)) {
             Path workDir = reader.getWorkDir();
             System.out.println(workDir.toAbsolutePath().toString());
@@ -134,7 +144,8 @@ public class OFDDemo {
      * @throws IOException
      */
     private static void addWrite() throws IOException {
-        Path path = Paths.get("D:\\workspace5\\Spring-lession\\spring-repose-demo\\b.ofd").toAbsolutePath();
+        String srcPPath = OFDDemo.class.getResource("b.ofd").getPath();
+        Path path = Paths.get(srcPPath).toAbsolutePath();
         try (OFDDoc ofdDoc = new OFDDoc(path)) {
             Paragraph p = new Paragraph("你好呀，OFD Reader&Writer！", 8d);
             ofdDoc.add(p);
@@ -150,8 +161,10 @@ public class OFDDemo {
      * @throws IOException
      */
     private static void addInputStream() throws IOException {
-        Path srcP = Paths.get("D:\\workspace5\\Spring-lession\\spring-repose-demo\\a.ofd");
-        Path outP = Paths.get("D:\\workspace5\\Spring-lession\\spring-repose-demo\\a.ofd");
+        String srcPPath = OFDDemo.class.getResource("b.ofd").getPath();
+        String outPPath = OFDDemo.class.getResource("b.ofd").getPath();
+        Path srcP = Paths.get(srcPPath);
+        Path outP = Paths.get(outPPath);
         try (OFDReader reader = new OFDReader(srcP);
              OFDDoc ofdDoc = new OFDDoc(reader, outP)) {
             // 插入到第1页 位置，后面的所有内容从第1页开始递增

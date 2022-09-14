@@ -177,4 +177,31 @@
             <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
         </repository>
     </repositories>
+
+    <build>
+        <!--编译所需的插件-->
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+
+        <resources>
+            <!--可以将resource文件打包的时候一起打包到文件中classes-->
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+            </resource>
+
+            <resource>
+                <directory>src/main/resources/config/${profiles.active}</directory>
+                <!--targetPath是指定目标文件打包到哪个文件夹下,这里默认就是放到resources下,也就是打包后的class文件夹下-->
+                <!--<targetPath>config</targetPath>-->
+            </resource>
+        </resources>
+    </build>
 </project>
