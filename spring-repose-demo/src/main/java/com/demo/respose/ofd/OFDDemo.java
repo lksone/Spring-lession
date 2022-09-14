@@ -17,6 +17,7 @@ import org.ofdrw.layout.element.canvas.FontSetting;
 import org.ofdrw.layout.exception.DocReadException;
 import org.ofdrw.reader.OFDReader;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -31,11 +32,14 @@ public class OFDDemo {
 
 
     public static void main(String[] args) throws IOException {
-        readImage();
+        File f = new File(OFDDemo.class.getResource("/").getPath());
+        System.out.println(f.getAbsolutePath());
     }
 
-
-    public static void add() {
+    /**
+     * 添加水印信息，可以写入文字的方式
+     */
+    public static void addWaterMarkToWord() {
         Path srcP = Paths.get("D:\\workspace5\\Spring-lession\\spring-repose-demo\\a.ofd");
         Path outP = Paths.get("D:\\workspace5\\Spring-lession\\spring-repose-demo\\a.ofd");
         try (OFDReader reader = new OFDReader(srcP); OFDDoc ofdDoc = new OFDDoc(reader, outP)) {
@@ -46,9 +50,11 @@ public class OFDDemo {
                 ctx.setFillColor(170, 160, 165)
                         .setFont(setting)
                         .setGlobalAlpha(0.4);
+                //多少行多少列
                 for (int i = 0; i <= 8; i++) {
                     for (int j = 0; j <= 8; j++) {
                         ctx.save();
+                        //旋转
                         ctx.translate(22.4 * i, j * 50);
                         ctx.rotate(45);
                         ctx.fillText("保密资料", 10, 10);
@@ -65,7 +71,13 @@ public class OFDDemo {
         System.out.println("生成文档位置：" + outP.toAbsolutePath().toString());
     }
 
-    private static void addImage() throws IOException {
+
+    /**
+     * 添加水印图片的方式
+     *
+     * @throws IOException
+     */
+    private static void addWaterMarkToImage() throws IOException {
         Path srcP = Paths.get("D:\\workspace5\\Spring-lession\\spring-repose-demo\\a.ofd");
         Path outP = Paths.get("D:\\workspace5\\Spring-lession\\spring-repose-demo\\a.ofd");
         Path imgPath = Paths.get("D:\\workspace5\\Spring-lession\\spring-repose-demo\\34.jpeg");
@@ -103,6 +115,7 @@ public class OFDDemo {
         System.out.println("生成文档位置：" + outP.toAbsolutePath().toString());
     }
 
+
     private static void readImage() throws IOException {
         Path srcP = Paths.get("D:\\workspace5\\Spring-lession\\spring-repose-demo\\a.ofd");
         try (OFDReader reader = new OFDReader(srcP)) {
@@ -115,6 +128,11 @@ public class OFDDemo {
         }
     }
 
+    /**
+     * 创建一个ofd文件
+     *
+     * @throws IOException
+     */
     private static void addWrite() throws IOException {
         Path path = Paths.get("D:\\workspace5\\Spring-lession\\spring-repose-demo\\b.ofd").toAbsolutePath();
         try (OFDDoc ofdDoc = new OFDDoc(path)) {
