@@ -17,7 +17,6 @@ import org.ofdrw.layout.element.canvas.FontSetting;
 import org.ofdrw.layout.exception.DocReadException;
 import org.ofdrw.reader.OFDReader;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -32,17 +31,19 @@ public class OFDDemo {
 
 
     public static void main(String[] args) throws IOException {
-        File f = new File(OFDDemo.class.getResource("/a.docx").getPath());
-        System.out.println(f.getAbsolutePath());
-        System.out.println(f.exists());
+        //1、创建ofd文件信息
+        addWrite();
+        //2、生成图片到ofd文件中
+        addWaterMarkToImage();
+        // addWaterMarkToWord();
     }
 
     /**
      * 添加水印信息，可以写入文字的方式
      */
     public static void addWaterMarkToWord() {
-        String resourcePathA = OFDDemo.class.getResource("a.ofd").getPath();
-        String resourcePathB = OFDDemo.class.getResource("a.ofd").getPath();
+        String resourcePathA = OFDDemo.class.getClassLoader().getResource("b.ofd").getPath().substring(1);
+        String resourcePathB = OFDDemo.class.getClassLoader().getResource("b.ofd").getPath().substring(1);
         Path srcP = Paths.get(resourcePathA);
         Path outP = Paths.get(resourcePathB);
         try (OFDReader reader = new OFDReader(srcP); OFDDoc ofdDoc = new OFDDoc(reader, outP)) {
@@ -71,6 +72,7 @@ public class OFDDemo {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         System.out.println("生成文档位置：" + outP.toAbsolutePath().toString());
     }
 
@@ -81,19 +83,20 @@ public class OFDDemo {
      * @throws IOException
      */
     private static void addWaterMarkToImage() throws IOException {
-        String srcPPath = OFDDemo.class.getResource("a.ofd").getPath();
-        String outPPath = OFDDemo.class.getResource("a.ofd").getPath();
-        String imgPPath = OFDDemo.class.getResource("34.jpeg").getPath();
+        String srcPPath = OFDDemo.class.getClassLoader().getResource("b.ofd").getPath().substring(1);
+        String outPPath = OFDDemo.class.getClassLoader().getResource("b.ofd").getPath().substring(1);
+        String imgPPath = OFDDemo.class.getClassLoader().getResource("34.jpeg").getPath().substring(1);
         Path srcP = Paths.get(srcPPath);
         Path outP = Paths.get(outPPath);
         Path imgP = Paths.get(imgPPath);
-
         try (OFDReader reader = new OFDReader(srcP);
              OFDDoc ofdDoc = new OFDDoc(reader, outP)) {
             for (int i = 1; i <= reader.getPageList().size(); i++) {
-                Annotation annotation = new Annotation(70d, 100d, 60d, 60d, AnnotType.Watermark, ctx -> {
-                    ctx.setGlobalAlpha(1d);
-                    ctx.drawImage(imgP, 0, 0, 40d, 40d);
+                //这是图片的x,y 长和宽的距离
+                Annotation annotation = new Annotation(10, 10, 30d, 50d, AnnotType.Watermark, ctx -> {
+                    ctx.setGlobalAlpha(0.6);
+                    //画布的大小
+                    ctx.drawImage(imgP, 0, 0, 0d, 0d);
                 });
                 annotation.setRemark("测试数据");
                 ofdDoc.addAnnotation(i, annotation);
@@ -126,7 +129,7 @@ public class OFDDemo {
 
 
     private static void readImage() throws IOException {
-        String srcPPath = OFDDemo.class.getResource("a.ofd").getPath();
+        String srcPPath = OFDDemo.class.getClassLoader().getResource("a.ofd").getPath().substring(1);
         Path srcP = Paths.get(srcPPath);
         try (OFDReader reader = new OFDReader(srcP)) {
             Path workDir = reader.getWorkDir();
@@ -144,8 +147,8 @@ public class OFDDemo {
      * @throws IOException
      */
     private static void addWrite() throws IOException {
-        String srcPPath = OFDDemo.class.getResource("b.ofd").getPath();
-        Path path = Paths.get(srcPPath).toAbsolutePath();
+        String srcPPath = OFDDemo.class.getResource("/").getPath().substring(1);
+        Path path = Paths.get(srcPPath + "b.ofd").toAbsolutePath();
         try (OFDDoc ofdDoc = new OFDDoc(path)) {
             Paragraph p = new Paragraph("你好呀，OFD Reader&Writer！", 8d);
             ofdDoc.add(p);

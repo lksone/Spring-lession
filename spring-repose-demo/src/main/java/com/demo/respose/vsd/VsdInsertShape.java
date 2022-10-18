@@ -16,7 +16,7 @@ public class VsdInsertShape {
 
     public static void main(String[] args) throws Exception {
         insertImage();
-        String dataDir = "C:\\Users\\Administrator\\Desktop\\132.vsdx";
+        String dataDir = "C:\\Users\\Administrator\\Desktop\\123.vsdx";
         Diagram diagram = new Diagram(dataDir);
         for (Object page : diagram.getPages()) {
             if(page instanceof Page){
@@ -36,16 +36,16 @@ public class VsdInsertShape {
      * @throws Exception
      */
     private static void insertImage() throws Exception {
-        String dataDir = "C:\\Users\\Administrator\\Desktop\\132.vsdx";
+        String dataDir = "C:\\Users\\Administrator\\Desktop\\123.vsdx";
         Diagram diagram = new Diagram(dataDir);
         Page page = diagram.getPages().getPage(0);
-        double pinX = 3, pinY = 3, width = 4, hieght = 4;
-        File file = new File("D:\\workspace5\\Spring-lession\\spring-repose-demo\\1662521435103.png");
+        double pinX = 3, pinY = 3, width = 1, hieght = 1;
+        File file = new File("D:\\workspace5\\Spring-lession\\spring-repose-demo\\src\\main\\resources\\34.jpeg");
         FileInputStream fis = new FileInputStream(file);
         long l = page.addShape(pinX, pinY, width, hieght, fis);
-        Image image = page.getShapes().getShape(l).getImage();
-        image.getTransparency().setValue(0.5);
-        image.setDel(1);
+        Image image1 = page.getShapes().getShape(l).getImage();
+        image1.getTransparency().setValue(0.5);
+        image1.setDel(1);
         Shape shape = page.getShapes().getShape(l);
         shape.sendToBack();
         page.getShapes().getShape(l).setName("这是一个信息");
