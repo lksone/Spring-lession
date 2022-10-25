@@ -6,7 +6,6 @@ import java.util.Random;
  * 现象数据信息
  *
  * @Author lks
- * @E-mail 13552418058@163.com
  * @Since 1.0
  * @Date 2022/10/18 18:59
  */
