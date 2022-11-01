@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<members>
+  <students>
+    <student name="张三" age="18" location="河南"/>
+    <student name="李四" age="26" location="新疆"/>
+    <student name="王五" age="20" location="北京"/>
+  </students>
+  <teachers>
+    <teacher name="zzs" age="18" location="河南"/>
+    <teacher name="zzf" age="26" location="新疆"/>
+    <teacher name="lt" age="20" location="北京"/>
+  </teachers>
+</members>
