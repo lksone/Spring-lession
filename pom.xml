@@ -27,6 +27,7 @@
         <module>spring-repose-demo</module>
         <module>spring-boot-socket-demo</module>
         <module>proxy-Demo</module>
+        <module>spring-camel-demo</module>
     </modules>
 
     <properties>
