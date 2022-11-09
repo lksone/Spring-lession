@@ -28,6 +28,7 @@
         <module>spring-boot-socket-demo</module>
         <module>proxy-Demo</module>
         <module>spring-camel-demo</module>
+        <module>Algorithm-leeCode</module>
     </modules>
 
     <properties>
