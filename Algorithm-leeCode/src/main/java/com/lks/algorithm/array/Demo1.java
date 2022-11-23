@@ -4,18 +4,6 @@ import java.util.Vector;
 
 public class Demo1 {
 
-
-    public static void main(String[] args) {
-     /*   Integer[] arr = {123, 34, 2, 3, 45, 26, 32, 55, 31};
-        Vector<Integer> objects = new Vector<>();
-        objects.addAll(Arrays.asList(arr));
-        System.out.println(objects.toArray());
-        int search = search(objects, 45);
-        System.out.println(search);*/
-
-        System.out.println(2 >> 1);
-    }
-
     /**
      * 左闭右闭
      *
@@ -51,6 +39,7 @@ public class Demo1 {
         int left = 0;
         int right = list.size();
         while (left < right) {
+            //1、
             int middle = left + ((right - left) >> 1);
             if (list.get(middle) < target) {
                 left = middle + 1;
@@ -63,5 +52,41 @@ public class Demo1 {
         return -1;
     }
 
+    /**
+     * 文件删除element 暴力解法
+     *
+     * @param arr
+     * @param target
+     * @return
+     */
+    private static int removeElement(int[] arr, int target) {
+        int size = arr.length;
+        for (int i = 0; i < size; i++) {
+            //如果发现有一个数据添加，那么直接将后面的数据向前移动一位
+            if (arr[i] == target) {
+                for (int j = i + 1; j < size; j++) {
+                    arr[j - 1] = arr[j];
+                }
+                //
+                i--;
+                //余下有大小为多少
+                size--;
+            }
+        }
+        return size;
+    }
+    public static void main(String[] args) {
+       /* Integer[] arr = {123, 34, 2, 3, 45, 26, 32, 55, 31};
+        Vector<Integer> objects = new Vector<>();
+        objects.addAll(Arrays.asList(arr));
+        System.out.println(objects.toArray());
+        int search = search(objects, 45);
+        System.out.println(search);*/
+
+        int[] arr2 = {123, 34, 2, 3, 45, 26, 32, 55, 31};
+        int i = removeElement(arr2, 123);
+        System.out.println(i);
+
+    }
 
 }
