@@ -3,6 +3,7 @@ package com.demo.jpa.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * @author lks
@@ -25,4 +26,7 @@ public class Account {
 
     @Column(name = "password")   //对应表中password这一列
     String password;
+
+    @Column(name = "create_time")
+    private Date createTime;
 }

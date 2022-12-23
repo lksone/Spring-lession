@@ -22,14 +22,22 @@ public class QueryTsl {
     private AccoutService accoutService;
 
 
-    @Test
-    public void method() {
-        accoutService.findOne();
-    }
 
 
     @Test
     public void method1() {
         accoutService.findOneMethod();
+    }
+
+
+    @Test
+    public void method2() {
+        accoutService.findSort2();
+    }
+
+
+    @Test
+    public void method3() {
+        accoutService.findSort();
     }
 }
